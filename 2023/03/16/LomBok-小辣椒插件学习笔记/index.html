@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LomBok-小辣椒插件学习笔记 - Wuiyan</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="wuyan,"> 
+    <meta name="description" content="一、LomBok插件概述LomBok插件是一款插件化注解API，可以在Java程序编译时根据注解为程序添加一些必需的通用代码，如常用的Getter、Setter、有参和无参构造方法等。
+使用这款插件,"> 
+    <meta name="author" content="Wuiyan"> 
+    <link rel="alternative" href="atom.xml" title="Wuiyan" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="LomBok-小辣椒插件学习笔记 - Wuiyan"/>
+    <meta name="twitter:description" content="一、LomBok插件概述LomBok插件是一款插件化注解API，可以在Java程序编译时根据注解为程序添加一些必需的通用代码，如常用的Getter、Setter、有参和无参构造方法等。
+使用这款插件,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="Wuiyan"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="LomBok-小辣椒插件学习笔记 - Wuiyan"/>
+    <meta property="og:description" content="一、LomBok插件概述LomBok插件是一款插件化注解API，可以在Java程序编译时根据注解为程序添加一些必需的通用代码，如常用的Getter、Setter、有参和无参构造方法等。
+使用这款插件,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Wuiyan</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">LomBok-小辣椒插件学习笔记</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">LomBok-小辣椒插件学习笔记</h1>
+        <div class="stuff">
+            <span>三月 16, 2023</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Lombok%E6%8F%92%E4%BB%B6/" rel="tag">Lombok插件</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h4 id="一、LomBok插件概述"><a href="#一、LomBok插件概述" class="headerlink" title="一、LomBok插件概述"></a>一、LomBok插件概述</h4><p>LomBok插件是一款插件化注解API，可以在Java程序编译时根据注解为程序添加一些必需的通用代码，如常用的Getter、Setter、有参和无参构造方法等。</p>
+<p>使用这款插件可以在很大程度上简化程序员所需要书写的代码量，但也有可能会带来一些意想不到的小问题，使程序的可读性变差。</p>
+<h4 id="二、LomBok插件配置方法"><a href="#二、LomBok插件配置方法" class="headerlink" title="二、LomBok插件配置方法"></a>二、LomBok插件配置方法</h4><p>1、导入依赖包，可以通过maven或者手动导入的方式完成。</p>
+<p>2、在IDEA中安装LomBok插件(在IDEA的新版本中默认是绑定安装的)</p>
+<p>插件的作用：在java文件编译之后的class文件中确实会包含get、set方法，但在书写源码时是没有这些方法的定义的，IDEA会认为这是错误，所以这个时候就需要一个lombok插件来解决问题。</p>
+<p>3、重启IDEA后，就可以开始使用LomBok插件的功能了，如果在运行时有报错，可能是插件没能正常加载，再次重启IDEA就好。</p>
+<h4 id="三、LomBok插件常用注解"><a href="#三、LomBok插件常用注解" class="headerlink" title="三、LomBok插件常用注解"></a>三、LomBok插件常用注解</h4><h5 id="1、-Getter"><a href="#1、-Getter" class="headerlink" title="1、@Getter"></a>1、@Getter</h5><p>作用：用来给成员变量生成相应的get方法，同时可以为生成的方法指定访问修饰符，默认修饰符是 public ，也可手动指定修饰符。</p>
+<p>位置：指定在类上，会对当前类的所有字段都生成相应的get方法，指定在字段上，只会对当前字段生效，当类和字段都设定上后，字段部分的设定优先生效。</p>
+<p>注：@Getter注解在指定类的时候，默认不会对 静态变量 生效，需要手动在静态字段上指定才可以，对于 final 常量可以正常生效。</p>
+<h5 id="2、-Setter"><a href="#2、-Setter" class="headerlink" title="2、@Setter"></a>2、@Setter</h5><p>作用：用来给成员变量生成相应的set方法，同时可以为生成的方法指定访问修饰符，默认修饰符是 public ，也可手动指定修饰符。</p>
+<p>位置：同 @Getter 的用法。</p>
+<p>注：@Setter注解在指定类的时候，默认也不会对 静态变量 生效，需要手动在静态字段上指定才可以，但对于 final 常量不可以生效。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter(AccessLevel.PRIVATE)</span>	<span class="comment">//设定生成的set方法是private的</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LomBok</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">id</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">&#125;<span class="comment">//可在类上直接设置@Getter和@Setter注解</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3、-Accessors"><a href="#3、-Accessors" class="headerlink" title="3、@Accessors"></a>3、@Accessors</h5><p>作用：这个注解要与@Getter与@Setter搭配使用，用来修改默认的setter与getter方法的形式。</p>
+<p>位置：可指定在类和字段上。</p>
+<p><strong>属性</strong>：</p>
+<p>3.1、chain 属性，属性值有true和false两种，默认是false，打开后可以让set方法支持链式调用，也就是set方法会返回对象本身。</p>
+<p>3.2、fluent 属性，属性值有true和false两种，默认也是false，打开后会使get和set方法的名字变得和成员变量的名称一样，通过重载去调用git和set。</p>
+<p>注：@Getter和@Setter注解生成的get和set方法的命名规则</p>
+<p>默认是在get或set后将原变量名的开头字母大写，再拼接到一块，若原本就是大写，则不进行改变。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> id;		getId();	<span class="comment">//将成员变量首字母大写后拼接。</span></span><br><span class="line"><span class="type">int</span> Id		<span class="title function_">getId</span><span class="params">()</span>;	<span class="comment">//原名称大写则不变。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="4、-ToString"><a href="#4、-ToString" class="headerlink" title="4、@ToString"></a>4、@ToString</h5><p>作用：用于格式化输出对象和toString方法类似，生成方法时只会使用类中的非静态成员变量。</p>
+<p>位置：只能指定在类上。</p>
+<p><strong>属性</strong>：</p>
+<ul>
+<li>includeFieldNames = true    // 输出时是否显示字段名 ，默认是true   </li>
+<li>exclude = {“name”}     // 排除某些字段，可多选，用逗号分隔就好</li>
+<li> of = {“age”}      // 只输出某些字段，和exclude不能同时使用</li>
+<li> callSuper = true //是否输出父类对象的toString信息， 默认false</li>
+<li>doNotUseGetters   // 输出时不使用get方法获取成员属性</li>
+</ul>
+<p>@ToString.Include.rank  用于排序，数字越大排序越靠前，只能适用于字段和方法类型。</p>
+<p>@ToString.Include.name  用于自定义字段名称，也只能适用于字段和方法。</p>
+<h5 id="5、-EqualsAndHashCode"><a href="#5、-EqualsAndHashCode" class="headerlink" title="5、@EqualsAndHashCode"></a>5、@EqualsAndHashCode</h5><p>作用：用于生成equals和hashCode方法，也是只会使用非静态成员变量。</p>
+<p>位置：只能指定在类上。</p>
+<p><strong>属性</strong>：</p>
+<ul>
+<li>callSuper 用于比较父类对象是否相同，对于继承的子类的equals方法中最好使用这个选项，可以提高安全性，防止将父类对象和子类对象当成相同的对象。默认是false</li>
+<li>cacheStrategy 对于hashCode方法是否添加缓存，在使用时会将第一次结果保存在变量中，下次就可以直接调用使用，默认是从不。</li>
+<li>exclude = {“name”}     // 排除某些字段，可多选，用逗号分隔就好</li>
+<li> of = {“age”}      // 只输出某些字段，和exclude不能同时使用</li>
+</ul>
+<h5 id="6、构造器相关注解"><a href="#6、构造器相关注解" class="headerlink" title="6、构造器相关注解"></a>6、构造器相关注解</h5><p><strong>共同点：</strong></p>
+<p>都只能在类上使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">staticName：自定义构造方法的名称，原构造方法会被设定为私有。</span><br><span class="line"></span><br><span class="line">access：设定方法的访问修饰符。默认是public</span><br><span class="line"></span><br><span class="line">onConstructor：生成指定注解的构造器，默认为空</span><br></pre></td></tr></table></figure>
+
+<h6 id="1-、-AllArgsConstructor"><a href="#1-、-AllArgsConstructor" class="headerlink" title="(1)、@AllArgsConstructor"></a>(1)、@AllArgsConstructor</h6><p>作用：生成所有参数的构造方法，</p>
+<h6 id="2-、-NoArgsConstructor"><a href="#2-、-NoArgsConstructor" class="headerlink" title="(2)、@NoArgsConstructor"></a>(2)、@NoArgsConstructor</h6><p>作用：生成无参的构造方法</p>
+<p><strong>特有属性</strong>：force：可以将所有 final 字段初始化为 0、null、false。默认为 false。</p>
+<h6 id="3-、-RequiredArgsConstructor"><a href="#3-、-RequiredArgsConstructor" class="headerlink" title="(3)、@RequiredArgsConstructor"></a>(3)、@RequiredArgsConstructor</h6><p>作用：会将类中所有带有<code>@NonNull注解</code> 的或者带有<code>final修饰的成员变量</code>生成对应的构造方法。</p>
+<h5 id="7、-Data"><a href="#7、-Data" class="headerlink" title="7、@Data"></a>7、@Data</h5><p>作用：相当于注解集合。效果等同于 <strong>@Getter + @Setter + @ToString + @EqualsAndHashCode + @RequiredArgsConstructor</strong> 效果同和这5个注解的效果。</p>
+<p>注：该注解并不包括@NoArgsConstructor和@AllArgsConstructor注解效果，且在有继承的情况下不建议使用此注解，因为这里的equals无法进行精确设定，容易出现问题。</p>
+<p>位置：指定在类中</p>
+<p><strong>属性</strong>：staticConstructor：为生成的构造器指定自定义方法名称。</p>
+<h5 id="8、-value"><a href="#8、-value" class="headerlink" title="8、@value"></a>8、@value</h5><p>作用： 将字段都变成不可变类型：<strong>使用final修饰， 同时还包含@ToString、@EqualsAndHashCode、@AllArgsConstructor 、@Getter</strong>(注意只有Getter没有Setter)和@Data的作用比较类似。</p>
+<p>位置：指定在类上</p>
+<p><strong>属性</strong>：staticConstructor：为生成的构造器指定自定义方法名称。 </p>
+<h5 id="9、-SneakyThrows"><a href="#9、-SneakyThrows" class="headerlink" title="9、@SneakyThrows"></a>9、@SneakyThrows</h5><p>作用：用于构建try-catch语句将方法包括起来。</p>
+<p>位置：指定在方法或构造方法上</p>
+<p><strong>属性</strong>：value： 用于指明要抛出的异常类型，默认是Throwable</p>
+<h5 id="10、-Cleanup"><a href="#10、-Cleanup" class="headerlink" title="10、@Cleanup"></a>10、@Cleanup</h5><p>作用：主要用来修饰 IO 流相关类, 会在 finally 代码块中对该资源进行 close();</p>
+<p>位置：作用于局部变量中</p>
+<p><strong>属性</strong>：value：指定关闭方法的方法名，默认是close。</p>
+<p>注：也可以使用try-with-resources的写法，也可以自动关闭歹有autoclose的连接。</p>
+<h5 id="11、-Builder"><a href="#11、-Builder" class="headerlink" title="11、@Builder"></a>11、@Builder</h5><p>作用：建造者模式，一种比较重要的创建对象的过程，不再是生成一个构造方法，而是使用了一个内部类来完成对象的创建，可以精细化、分步去进行一个类对象的创建。</p>
+<p>构造器类的的set方法支持链式调用</p>
+<p>位置：类、方法、构造器上使用</p>
+<p><strong>属性</strong>：</p>
+<p><code>builderMethodName</code>：生成builder内部类对象的方法名称，默认是：builder</p>
+<p><code>buildMethodName</code>： 返回建造对象的方法名称，默认是：build</p>
+<p><code>builderClassName</code>：内部类的类名，</p>
+<p><code>toBuilder</code>： 将build重新变回builder进行再次设置，默认为false</p>
+<p><strong>@Builder.Default</strong> </p>
+<p>使用在属性上，用于指定某个属性的默认值，若无设置则使用默认值。</p>
+<p><strong>@Builder.ObtainVia</strong></p>
+<p>使用在属性上和方法内的参数里，用于对toBuilder方法生成的builder对象的值或方法的获取方式做一些限定。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">field：将某个属性的值用另外一个属性的值去代替</span><br><span class="line">method：将某个属性的值获取方法改成自己指定的方法</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="四、LomBok插件优缺点"><a href="#四、LomBok插件优缺点" class="headerlink" title="四、LomBok插件优缺点"></a>四、LomBok插件优缺点</h4><p>优点：</p>
+<p>可以帮助我们省去很多冗余代码，使项目的开发更加高效、便捷。</p>
+<p>缺点：</p>
+<p>有很高的侵入性，在项目中有人使用会使得所有的人都要去使用这种插件，</p>
+<p>会让代码可读性变差，调试起来也更加麻烦</p>
+<p>同时过度使用可能会创造很多用不到的方法，造成隐患。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
