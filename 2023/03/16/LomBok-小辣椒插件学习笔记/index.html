@@ -127,7 +127,7 @@
 <p><strong>特有属性</strong>：force：可以将所有 final 字段初始化为 0、null、false。默认为 false。</p>
 <h6 id="3-、-RequiredArgsConstructor"><a href="#3-、-RequiredArgsConstructor" class="headerlink" title="(3)、@RequiredArgsConstructor"></a>(3)、@RequiredArgsConstructor</h6><p>作用：会将类中所有带有<code>@NonNull注解</code> 的或者带有<code>final修饰的成员变量</code>生成对应的构造方法。</p>
 <h5 id="7、-Data"><a href="#7、-Data" class="headerlink" title="7、@Data"></a>7、@Data</h5><p>作用：相当于注解集合。效果等同于 <strong>@Getter + @Setter + @ToString + @EqualsAndHashCode + @RequiredArgsConstructor</strong> 效果同和这5个注解的效果。</p>
-<p>注：该注解并不包括@NoArgsConstructor和@AllArgsConstructor注解效果，且在有继承的情况下不建议使用此注解，因为这里的equals无法进行精确设定，容易出现问题。</p>
+<p>注：该注解并不包括@NoArgsConstructor和@AllArgsConstructor注解效果，且在有继承的情况下不建议单独使用此注解，因为这里的equals方法没有经过设定，容易出现问题，应和@EqualsAndHashCode配合使用。</p>
 <p>位置：指定在类中</p>
 <p><strong>属性</strong>：staticConstructor：为生成的构造器指定自定义方法名称。</p>
 <h5 id="8、-value"><a href="#8、-value" class="headerlink" title="8、@value"></a>8、@value</h5><p>作用： 将字段都变成不可变类型：<strong>使用final修饰， 同时还包含@ToString、@EqualsAndHashCode、@AllArgsConstructor 、@Getter</strong>(注意只有Getter没有Setter)和@Data的作用比较类似。</p>
