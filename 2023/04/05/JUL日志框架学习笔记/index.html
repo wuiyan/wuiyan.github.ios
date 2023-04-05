@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JUL日志框架 - Wuiyan</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="wuyan,"> 
+    <meta name="description" content="一、JUL框架介绍JUL 全称 : Java util logging ，Java原生的日志框架，主要用于小型项目，使用方便。
+作用：可以按照不同的层次分级去显示信息，将程序运行中的信息更加规范化的,"> 
+    <meta name="author" content="Wuiyan"> 
+    <link rel="alternative" href="atom.xml" title="Wuiyan" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.ico"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="JUL日志框架 - Wuiyan"/>
+    <meta name="twitter:description" content="一、JUL框架介绍JUL 全称 : Java util logging ，Java原生的日志框架，主要用于小型项目，使用方便。
+作用：可以按照不同的层次分级去显示信息，将程序运行中的信息更加规范化的,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="Wuiyan"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="JUL日志框架 - Wuiyan"/>
+    <meta property="og:description" content="一、JUL框架介绍JUL 全称 : Java util logging ，Java原生的日志框架，主要用于小型项目，使用方便。
+作用：可以按照不同的层次分级去显示信息，将程序运行中的信息更加规范化的,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Wuiyan</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">JUL日志框架</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">JUL日志框架</h1>
+        <div class="stuff">
+            <span>四月 05, 2023</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/" rel="tag">日志框架</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h4 id="一、JUL框架介绍"><a href="#一、JUL框架介绍" class="headerlink" title="一、JUL框架介绍"></a>一、JUL框架介绍</h4><p>JUL 全称 : Java util logging ，Java原生的日志框架，主要用于小型项目，使用方便。</p>
+<p>作用：可以按照不同的层次分级去显示信息，将程序运行中的信息更加规范化的输出。</p>
+<h4 id="二、JUL组成介绍"><a href="#二、JUL组成介绍" class="headerlink" title="二、JUL组成介绍"></a>二、JUL组成介绍</h4><ul>
+<li><strong>Logger</strong>：也被称作记录器，是日志实现的基础。</li>
+<li><strong>Handler</strong>|Appenders：也被称作处理器，一个 Logger 可同时存在多个处理器，以其具体实现类决定日志的输出位置是控制台、文件还是网络上的其他日志服务器。</li>
+<li><strong>Layouts</strong>：也被称为Formatters，它负责对日志事件中的数据进行转换和格式化，它决定了日志记录的最终显示形式。</li>
+<li><strong>Level</strong>：日志输出级别，Logger 和 Handeler 都有一个 Level 级别，如两者出现冲突时，以级别高的等级为准。</li>
+<li><strong>Filters</strong>：过滤器，可以自主过滤掉不需要的日志信息，可以在 Logger 和 Handeler 上分别设置。</li>
+</ul>
+<p><img src="https://img2020.cnblogs.com/blog/2263764/202012/2263764-20201230151339584-844674154.png"></p>
+<h4 id="三、日志等级划分"><a href="#三、日志等级划分" class="headerlink" title="三、日志等级划分"></a>三、日志等级划分</h4><p>在JUL中日志被划分为七个等级，由高到低分别为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SEVERE（最高等级）代表程序出现了严重错误</span><br><span class="line">WARNING	用于表示某些警告信息</span><br><span class="line">INFO（默认等级）常规消息</span><br><span class="line">CONFIG</span><br><span class="line">FINE</span><br><span class="line">FINER</span><br><span class="line">FINEST（最低等级）</span><br></pre></td></tr></table></figure>
+
+<p>还有两个特殊等级 OFF和ALL，OFF用于关闭日志记录，ALL用于启用所有的消息日志记录。</p>
+<p>需注意，虽然日志等级被分为了七个等级，<strong>但默认只显示INFO及以上等级。</strong></p>
+<h4 id="四、日志框架的基础使用"><a href="#四、日志框架的基础使用" class="headerlink" title="四、日志框架的基础使用"></a>四、日志框架的基础使用</h4><p>1、获取当前类的 logger 对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> Logger.getLogger(MainTest.class.getName());</span><br><span class="line"><span class="comment">// logger 对象不能直接创建，需要用静态方法去获取，方法的参数是想要记录日志信息类的完整包名，可用 类名.class.getName()去获取。</span></span><br></pre></td></tr></table></figure>
+
+<p>2、输出日志信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">logger.severe(<span class="string">&quot;我是一条错误信息&quot;</span>);</span><br><span class="line">logger.warning(<span class="string">&quot;我是一条警告信息&quot;</span>);</span><br><span class="line">logger.info(<span class="string">&quot;我是一条日志信息&quot;</span>);</span><br><span class="line"><span class="comment">// 可通过这种方式去输出日志信息，输出位置要看handler处理器是什么，默认是向控制台输出。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="五、日志框架的自定义配置"><a href="#五、日志框架的自定义配置" class="headerlink" title="五、日志框架的自定义配置"></a>五、日志框架的自定义配置</h4><p>对于JUL日志框架来说，可以设定其日志输出等级，日志处理器类型，输出日志格式，过滤器配置。</p>
+<p>可以通过两种方式去设置：程序中设置和配置文件设置，文件设置是比较常用且方便的格式。</p>
+<p>1、常用配置文件设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#全局配置</span><br><span class="line"></span><br><span class="line"># 顶级RootLogger关联的Handler，多个Handler使用逗号隔开</span><br><span class="line"># 对于其他Logger，如果没有指定自己的Handler，则默认使用此handlers</span><br><span class="line">handlers= java.util.logging.FileHandler</span><br><span class="line"></span><br><span class="line"># 默认全局日志级别，Logger和Handler都可以设置自己的日志级别来覆盖此级别</span><br><span class="line">.level= ALL</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Handler 配置</span><br><span class="line"></span><br><span class="line"># FileHandler定义</span><br><span class="line"># 日志文件存储位置</span><br><span class="line">java.util.logging.FileHandler.pattern = ./jul%u.log</span><br><span class="line"># 单个文件的最大字节数，0代表不限制</span><br><span class="line">java.util.logging.FileHandler.limit = 50000</span><br><span class="line"># 文件数量上限，多个文件为jul0.log.0，jul0.log.1 ...</span><br><span class="line">java.util.logging.FileHandler.count = 5</span><br><span class="line"># 日志级别</span><br><span class="line">java.util.logging.FileHandler.level = info</span><br><span class="line"># 日志追加方式</span><br><span class="line">java.util.logging.FileHandler.append = true</span><br><span class="line"># Handler对象采用的字符集</span><br><span class="line">java.util.logging.FileHandler.encoding = UTF-8</span><br><span class="line"># 日志格式，使用系统默认的简单格式</span><br><span class="line">java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 特定Logger 配置</span><br><span class="line"></span><br><span class="line"># 设置名称为org.example.Main的Logger对象的日志级别为WARNING</span><br><span class="line">org.example.Main.level = WARNING</span><br></pre></td></tr></table></figure>
+
+<p>加载配置文件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">LogManager</span> <span class="variable">logManager</span> <span class="operator">=</span> LogManager.getLogManager();   logManager.readConfiguration(Resources.getResourceAsStream(<span class="string">&quot;logging.properties&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2、程序中设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前类的日志记录器对象</span></span><br><span class="line">   <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> Logger.getLogger(MainTest.class.getName());</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 关闭默认配置，即不使用父Logger的Handlers</span></span><br><span class="line">   logger.setUseParentHandlers(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 设置记录器的日志级别为ALL</span></span><br><span class="line">   logger.setLevel(Level.ALL);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 日志记录格式，使用简单格式转换对象</span></span><br><span class="line">   <span class="type">SimpleFormatter</span> <span class="variable">simpleFormatter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleFormatter</span>();</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 控制台输出Handler,并且设置日志级别为INFO，日志记录格式</span></span><br><span class="line">   <span class="type">ConsoleHandler</span> <span class="variable">consoleHandler</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConsoleHandler</span>();</span><br><span class="line">   consoleHandler.setLevel(Level.INFO);</span><br><span class="line">   consoleHandler.setFormatter(simpleFormatter);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 文件输出Handler,并且设置日志级别为FINE，日志记录格式</span></span><br><span class="line">   <span class="type">FileHandler</span> <span class="variable">fileHandler</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileHandler</span>(<span class="string">&quot;./jul.log&quot;</span>);</span><br><span class="line">   fileHandler.setLevel(Level.FINE);</span><br><span class="line">   fileHandler.setFormatter(simpleFormatter);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 记录器关联处理器，即此logger对象的日志信息输出到这两个Handler进行处理</span></span><br><span class="line">   logger.addHandler(consoleHandler);</span><br><span class="line">   logger.addHandler(fileHandler);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 日志记录输出</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="六、日志处理器的分类"><a href="#六、日志处理器的分类" class="headerlink" title="六、日志处理器的分类"></a>六、日志处理器的分类</h4><table>
+<thead>
+<tr>
+<th></th>
+<th align="center">ConsoleHandeler（控制台日志处理器）</th>
+<th align="center">FileHandler（文件日志处理器）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>日志输出位置</strong></td>
+<td align="center">输出到控制台</td>
+<td align="center">输出到文件</td>
+</tr>
+<tr>
+<td><strong>日志输出格式</strong></td>
+<td align="center">默认是普通文本格式</td>
+<td align="center">默认是xml格式</td>
+</tr>
+<tr>
+<td><strong>写入方式</strong></td>
+<td align="center">无</td>
+<td align="center">可以设置是否追加写入，默认是false</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">Logger的默认日志处理器</td>
+<td align="center">无</td>
+</tr>
+</tbody></table>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
